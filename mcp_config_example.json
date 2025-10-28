@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "utrecht-opendata": {
+      "command": "python3",
+      "args": [
+        "/Users/marc/Projecten/utrecht/mcp_server.py"
+      ],
+      "description": "Utrecht Open Data API - Toegang tot DCAT datasets en (toekomstig) Woo documenten",
+      "env": {}
+    }
+  }
+}

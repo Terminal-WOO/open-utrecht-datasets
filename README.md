@@ -33,7 +33,8 @@ De API bevat momenteel datasets in DCAT formaat. In de toekomst komen hier ook W
 ### MCP Server
 - Integratie met AI assistenten (Claude, etc.)
 - Programmatische toegang tot alle datasets
-- Tools voor zoeken, ophalen en downloaden
+- **Utrecht Open Data**: 6 tools voor datasets en Woo-analyse
+- **Data.overheid.nl**: 4 tools voor landelijke datasets en organisaties
 - **Woo-integratie**: Koppeling met landelijke Woo-index voor documentrelaties
 - Intelligente analyse van dataset-relevantie voor Woo-categorieën
 
@@ -163,15 +164,24 @@ Voeg toe aan je Claude Desktop configuratie (`~/Library/Application Support/Clau
 
 #### Beschikbare MCP Tools
 
-**Dataset Tools:**
-- `search_datasets` - Zoek naar datasets
-- `get_dataset` - Haal dataset details op
+**Utrecht Open Data Tools (6):**
+- `search_datasets` - Zoek naar Utrecht datasets
+- `get_dataset` - Haal Utrecht dataset details op
 - `get_distributions` - Haal beschikbare downloads op
-- `list_all_datasets` - Toon alle datasets
-
-**Woo Integratie Tools:**
-- `analyze_woo_connection` - Analyseer relevantie van dataset voor Woo-categorieën
+- `list_all_datasets` - Toon alle Utrecht datasets
+- `analyze_woo_connection` - Analyseer relevantie voor Woo-categorieën
 - `find_woo_related_datasets` - Zoek datasets gerelateerd aan Woo-onderwerpen
+
+**Data.overheid.nl Tools (4) - NIEUW:**
+- `dataoverheid_search` - Zoek datasets van alle Nederlandse overheidsorganisaties
+  - Ondersteunt filters op organisatie en tags
+  - 10.000+ datasets beschikbaar
+- `dataoverheid_get_dataset` - Haal landelijke dataset details op
+  - Inclusief alle resources en metadata
+- `dataoverheid_list_organizations` - Lijst van overheidsorganisaties
+  - CBS, gemeenten, provincies, ministeries, waterschappen
+- `dataoverheid_get_organization` - Details van organisatie met datasets
+  - Optioneel inclusief alle datasets van de organisatie
 
 #### Woo Integratie Gebruiken
 
@@ -223,6 +233,43 @@ De API gebruikt de DCAT (Data Catalog Vocabulary) standaard met namespaced attri
 - `dcat:keyword` - Trefwoorden
 - `dcat:accessURL` - Download URL
 
+### Data.overheid.nl API
+
+**Base URL**: `https://data.overheid.nl/data/api/3/action`
+
+**Type**: CKAN API v3 (volledig gestandaardiseerd)
+
+**Belangrijkste endpoints**:
+- `package_search` - Zoek datasets met filters
+- `package_show` - Haal dataset details op
+- `organization_list` - Lijst van organisaties
+- `organization_show` - Organisatie details met datasets
+- `tag_list` - Alle beschikbare tags
+
+**Voorbeelden**:
+```bash
+# Zoek naar datasets over "klimaat"
+GET /package_search?q=klimaat&rows=10
+
+# Haal dataset op
+GET /package_show?id=cbs-energie-kerncijfers
+
+# Lijst organisaties
+GET /organization_list?all_fields=true
+
+# CBS datasets
+GET /package_search?fq=organization:"cbs-opendata"&rows=20
+```
+
+**Filters**:
+- `q` - Zoekterm (fulltext)
+- `fq` - Filter query (bijv. `organization:"gemeente-utrecht"`)
+- `rows` - Aantal resultaten (max 1000)
+- `start` - Offset voor paginering
+- `sort` - Sortering (bijv. `metadata_modified desc`)
+
+**Documentatie**: https://docs.ckan.org/en/latest/api/
+
 ## 📁 Projectstructuur
 
 ```
@@ -231,8 +278,9 @@ utrecht/
 ├── QUICKSTART.md             # Snelstart gids
 ├── PROJECT_SUMMARY.md        # Project overzicht
 ├── requirements.txt           # Python dependencies
-├── proxy_server.py           # CORS proxy server (verplicht voor web!)
-├── utrecht_open_data.py      # Command-line tool
+├── proxy_server.py           # CORS proxy server (voor beide APIs!)
+├── utrecht_open_data.py      # Utrecht command-line tool
+├── dataoverheid.py           # Data.overheid.nl module (NIEUW!)
 ├── mcp_server.py             # MCP server voor AI assistenten
 ├── woo_connector.py          # Woo-integratie module
 ├── index.html                # Web interface
@@ -336,7 +384,85 @@ Beschikbare formaten:
 ================================================================================
 ```
 
-### Voorbeeld 5: Woo-analyse via MCP in Claude Desktop
+### Voorbeeld 5: Data.overheid.nl - Zoeken naar CBS datasets
+
+```bash
+python3 dataoverheid.py
+```
+
+Dan interactief gebruiken, of direct via Python:
+
+```python
+from dataoverheid import DataOverheidConnector
+
+connector = DataOverheidConnector()
+
+# Zoek datasets
+result = connector.search_datasets(query="klimaat", rows=5)
+print(connector.format_search_results(result))
+
+# Zoek datasets van specifieke organisatie
+result = connector.search_datasets(
+    organization="gemeente-utrecht",
+    rows=10
+)
+
+# Haal dataset details op
+dataset = connector.get_dataset("cbs-energie-kerncijfers")
+print(connector.format_dataset_summary(dataset))
+
+# Lijst organisaties
+orgs = connector.list_organizations(all_fields=True)
+for org in orgs[:10]:
+    print(f"{org['title']}: {org['package_count']} datasets")
+```
+
+### Voorbeeld 6: Data.overheid.nl via MCP in Claude Desktop
+
+**Vraag aan Claude:**
+```
+Zoek datasets over "duurzaamheid" op data.overheid.nl
+```
+
+**Claude's response (gebruikt dataoverheid_search tool):**
+```
+Gevonden: 248 datasets
+
+1. Duurzaamheidsindicatoren gemeenten
+   ID: cbs-duurzaamheidsindicatoren-gemeenten
+   Organisatie: CBS OpenData
+   Het CBS publiceert verschillende indicatoren...
+   Formaten: CSV, JSON, XML
+
+2. Energieverbruik woningen
+   ID: rijkswaterstaat-energieverbruik-woningen
+   ...
+```
+
+**Organisaties ophalen:**
+```
+Toon top 10 overheidsorganisaties op data.overheid.nl
+```
+
+**Claude gebruikt dataoverheid_list_organizations tool:**
+```
+🏛️ Nederlandse overheidsorganisaties op data.overheid.nl
+
+1. CBS OpenData
+   ID: cbs-opendata
+   Datasets: 5815
+   
+2. CBS Microdata  
+   ID: cbs-microdata
+   Datasets: 1313
+   
+3. Gemeente Amsterdam
+   ID: gemeente-amsterdam
+   Datasets: 137
+   ...
+```
+
+### Voorbeeld 7: Woo-analyse via MCP in Claude Desktop
 
 **Vraag aan Claude:**
 ```

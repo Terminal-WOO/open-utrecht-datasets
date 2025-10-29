@@ -1,9 +1,14 @@
 #!/usr/bin/env python3
 """
-CORS Proxy Server voor Utrecht Open Data API
+CORS Proxy Server voor Open Data APIs
 
 Deze proxy lost het CORS probleem op door requests door te sturen
-naar de Utrecht API en de juiste CORS headers toe te voegen.
+naar verschillende Open Data APIs en de juiste CORS headers toe te voegen.
+
+Ondersteunt:
+- Utrecht Open Data API
+- Data.overheid.nl CKAN API
+- Woo-analyse functionaliteit
 """
 
 from http.server import HTTPServer, SimpleHTTPRequestHandler
@@ -17,6 +22,7 @@ class CORSProxyHandler(SimpleHTTPRequestHandler):
     """HTTP handler die CORS headers toevoegt en API requests proxied."""
 
     UTRECHT_API_BASE = "https://open.utrecht.nl/api"
+    DATAOVERHEID_API_BASE = "https://data.overheid.nl/data/api/3/action"
 
     def end_headers(self):
         """Voeg CORS headers toe aan alle responses."""
@@ -36,6 +42,9 @@ class CORSProxyHandler(SimpleHTTPRequestHandler):
         # Als het pad begint met /api/, proxy het naar de Utrecht API
         if self.path.startswith('/api/'):
             self.proxy_api_request()
+        # Als het pad begint met /dataoverheid/, proxy naar data.overheid.nl
+        elif self.path.startswith('/dataoverheid/'):
+            self.proxy_dataoverheid_request()
         # Als het pad begint met /woo/, handle Woo-analyse
         elif self.path.startswith('/woo/analyze/'):
             self.handle_woo_analysis()
@@ -124,6 +133,47 @@ class CORSProxyHandler(SimpleHTTPRequestHandler):
             print(f"URL Error: {e.reason}")
             self.send_error(502, f"Cannot reach API: {e.reason}")
 
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+            self.send_error(500, f"Internal server error: {str(e)}")
+
+    def proxy_dataoverheid_request(self):
+        """Proxy een request naar de data.overheid.nl CKAN API."""
+        try:
+            # Bouw de volledige API URL
+            # Path format: /dataoverheid/{action}?params
+            path_parts = self.path[13:]  # Remove /dataoverheid prefix
+
+            # Split action and query params
+            if '?' in path_parts:
+                action, query = path_parts.split('?', 1)
+                full_url = f"{self.DATAOVERHEID_API_BASE}{action}?{query}"
+            else:
+                full_url = f"{self.DATAOVERHEID_API_BASE}{path_parts}"
+
+            print(f"Proxying request to data.overheid.nl: {full_url}")
+
+            # Maak request naar de CKAN API
+            req = urllib.request.Request(full_url)
+            req.add_header('Accept', 'application/json')
+            req.add_header('User-Agent', 'DataOverheid-Proxy/1.0')
+
+            with urllib.request.urlopen(req, timeout=30) as response:
+                data = response.read()
+
+                # Stuur response terug naar client met CORS headers
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.send_header('Content-Length', len(data))
+                self.end_headers()
+                self.wfile.write(data)
+
+        except urllib.error.HTTPError as e:
+            print(f"HTTP Error: {e.code} - {e.reason}")
+            self.send_error(e.code, f"API Error: {e.reason}")
+        except urllib.error.URLError as e:
+            print(f"URL Error: {e.reason}")
+            self.send_error(502, f"Cannot reach data.overheid.nl: {e.reason}")
         except Exception as e:
             print(f"Unexpected error: {e}")
             self.send_error(500, f"Internal server error: {str(e)}")

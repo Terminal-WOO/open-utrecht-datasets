@@ -9,15 +9,20 @@ Ondersteunt DCAT datasets en (toekomstig) Woo documenten en dossiers.
 import asyncio
 import json
 import sys
-from typing import Any, Optional
+from typing import Any, Optional, List
 import urllib.request
 import urllib.error
 
-# Import Woo connector
+# Import Woo connector and DataOverheid connector
 try:
     from woo_connector import WooConnector
 except ImportError:
     WooConnector = None
+
+try:
+    from dataoverheid import DataOverheidConnector
+except ImportError:
+    DataOverheidConnector = None
 
 # MCP Protocol
 class MCPServer:
@@ -25,8 +30,9 @@ class MCPServer:
 
     def __init__(self):
         self.api_base = "https://open.utrecht.nl/api"
-        self.version = "1.0.0"
+        self.version = "1.1.0"
         self.woo_connector = WooConnector() if WooConnector else None
+        self.dataoverheid = DataOverheidConnector() if DataOverheidConnector else None
 
     async def handle_request(self, request: dict) -> dict:
         """Handle incoming MCP requests"""
@@ -152,6 +158,81 @@ class MCPServer:
                     },
                     "required": ["topic"]
                 }
+            },
+            # Data.overheid.nl tools
+            {
+                "name": "dataoverheid_search",
+                "description": "Zoek datasets op data.overheid.nl van alle Nederlandse overheidsorganisaties. Ondersteunt filteren op organisatie en tags.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "query": {
+                            "type": "string",
+                            "description": "Zoekterm voor fulltext search (optioneel)"
+                        },
+                        "organization": {
+                            "type": "string",
+                            "description": "Filter op organisatie naam (bijv. 'gemeente-utrecht')"
+                        },
+                        "tags": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": "Filter op tags/keywords"
+                        },
+                        "limit": {
+                            "type": "integer",
+                            "description": "Maximum aantal resultaten (standaard 20, max 100)",
+                            "default": 20
+                        }
+                    }
+                }
+            },
+            {
+                "name": "dataoverheid_get_dataset",
+                "description": "Haal details op van een specifieke dataset van data.overheid.nl inclusief alle resources en metadata.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "dataset_id": {
+                            "type": "string",
+                            "description": "Het unieke ID of name van de dataset"
+                        }
+                    },
+                    "required": ["dataset_id"]
+                }
+            },
+            {
+                "name": "dataoverheid_list_organizations",
+                "description": "Lijst van alle overheidsorganisaties op data.overheid.nl met aantal datasets.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "limit": {
+                            "type": "integer",
+                            "description": "Maximum aantal organisaties (standaard 50)",
+                            "default": 50
+                        }
+                    }
+                }
+            },
+            {
+                "name": "dataoverheid_get_organization",
+                "description": "Details van een specifieke overheidsorganisatie inclusief datasets.",
+                "inputSchema": {
+                    "type": "object",
+                    "properties": {
+                        "org_id": {
+                            "type": "string",
+                            "description": "ID of name van de organisatie"
+                        },
+                        "include_datasets": {
+                            "type": "boolean",
+                            "description": "Ook datasets ophalen (standaard false)",
+                            "default": false
+                        }
+                    },
+                    "required": ["org_id"]
+                }
             }
         ]
 
@@ -182,6 +263,23 @@ class MCPServer:
                 result = await self.analyze_woo_connection(arguments["dataset_id"])
             elif tool_name == "find_woo_related_datasets":
                 result = await self.find_woo_related_datasets(arguments["topic"])
+            # Data.overheid.nl tools
+            elif tool_name == "dataoverheid_search":
+                result = await self.dataoverheid_search(
+                    arguments.get("query"),
+                    arguments.get("organization"),
+                    arguments.get("tags"),
+                    arguments.get("limit", 20)
+                )
+            elif tool_name == "dataoverheid_get_dataset":
+                result = await self.dataoverheid_get_dataset(arguments["dataset_id"])
+            elif tool_name == "dataoverheid_list_organizations":
+                result = await self.dataoverheid_list_organizations(arguments.get("limit", 50))
+            elif tool_name == "dataoverheid_get_organization":
+                result = await self.dataoverheid_get_organization(
+                    arguments["org_id"],
+                    arguments.get("include_datasets", False)
+                )
             else:
                 return self.error_response(request_id, -32602, f"Unknown tool: {tool_name}")
 
@@ -401,7 +499,7 @@ class MCPServer:
         """Analyseer Woo koppeling voor een dataset"""
         if not self.woo_connector:
             return "⚠️ Woo connector niet beschikbaar"
-        
+
         try:
             data = await self.fetch_api(f"/datasets/{dataset_id}")
             dataset = data.get("data", data)
@@ -409,41 +507,165 @@ class MCPServer:
             return report
         except Exception as e:
             return f"❌ Fout: {str(e)}"
-    
+
     async def find_woo_related_datasets(self, topic: str) -> str:
         """Vind datasets gerelateerd aan een Woo onderwerp"""
         if not self.woo_connector:
             return "⚠️ Woo connector niet beschikbaar"
-        
+
         try:
             data = await self.fetch_api("/datasets")
             datasets = data.get("data", [])
             related = self.woo_connector.find_related_datasets(topic, datasets)
-            
+
             if not related:
                 return f"Geen datasets gevonden gerelateerd aan '{topic}'"
-            
+
             result = f"🔗 Datasets gerelateerd aan '{topic}':\n\nGevonden: {len(related)} dataset(s)\n\n"
-            
+
             for item in related[:10]:
                 ds, analysis, relevance = item['dataset'], item['analysis'], item['relevance']
                 attrs = ds.get('attributes', {})
                 title = self.get_attr(attrs, 'title') or ds.get('id', 'Geen titel')
-                
+
                 result += f"📊 {title}\n   ID: {ds.get('id')}\n   Relevantie: {relevance}/10\n"
                 result += f"   Topics: {', '.join(analysis['topics'][:3])}\n"
-                
+
                 if analysis['woo_categories']:
                     woo_cats = [c['name'] for c in analysis['woo_categories'][:2]]
                     result += f"   Woo categorieën: {', '.join(woo_cats)}\n"
                 result += "\n"
-            
+
             if len(related) > 10:
                 result += f"... en nog {len(related) - 10} datasets meer\n"
-            
+
             return result
         except Exception as e:
             return f"❌ Fout: {str(e)}"
+
+    # Data.overheid.nl tool implementations
+    async def dataoverheid_search(self, query: Optional[str], organization: Optional[str],
+                                  tags: Optional[List[str]], limit: int) -> str:
+        """Zoek datasets op data.overheid.nl"""
+        if not self.dataoverheid:
+            return "⚠️ Data.overheid.nl connector niet beschikbaar"
+
+        try:
+            loop = asyncio.get_event_loop()
+            result = await loop.run_in_executor(
+                None,
+                lambda: self.dataoverheid.search_datasets(
+                    query=query,
+                    organization=organization,
+                    tags=tags,
+                    rows=min(limit, 100)
+                )
+            )
+
+            return self.dataoverheid.format_search_results(result, compact=False)
+        except Exception as e:
+            return f"❌ Fout bij zoeken: {str(e)}"
+
+    async def dataoverheid_get_dataset(self, dataset_id: str) -> str:
+        """Haal dataset details op van data.overheid.nl"""
+        if not self.dataoverheid:
+            return "⚠️ Data.overheid.nl connector niet beschikbaar"
+
+        try:
+            loop = asyncio.get_event_loop()
+            dataset = await loop.run_in_executor(
+                None,
+                lambda: self.dataoverheid.get_dataset(dataset_id)
+            )
+
+            return self.dataoverheid.format_dataset_summary(dataset)
+        except Exception as e:
+            return f"❌ Fout bij ophalen dataset: {str(e)}"
+
+    async def dataoverheid_list_organizations(self, limit: int) -> str:
+        """Lijst van overheidsorganisaties"""
+        if not self.dataoverheid:
+            return "⚠️ Data.overheid.nl connector niet beschikbaar"
+
+        try:
+            loop = asyncio.get_event_loop()
+            orgs = await loop.run_in_executor(
+                None,
+                lambda: self.dataoverheid.list_organizations(all_fields=True)
+            )
+
+            result = f"🏛️ Nederlandse overheidsorganisaties op data.overheid.nl\n\n"
+            result += f"Totaal: {len(orgs)} organisaties\n\n"
+
+            for i, org in enumerate(orgs[:limit], 1):
+                title = org.get('title', org.get('display_name', org.get('name', 'Onbekend')))
+                package_count = org.get('package_count', 0)
+                result += f"{i}. {title}\n"
+                result += f"   ID: {org.get('name', 'onbekend')}\n"
+                result += f"   Datasets: {package_count}\n"
+
+                description = org.get('description', '')
+                if description and len(description) > 0:
+                    preview = description[:100] + '...' if len(description) > 100 else description
+                    result += f"   {preview}\n"
+                result += "\n"
+
+            if len(orgs) > limit:
+                result += f"... en nog {len(orgs) - limit} organisaties meer\n"
+
+            return result
+        except Exception as e:
+            return f"❌ Fout bij ophalen organisaties: {str(e)}"
+
+    async def dataoverheid_get_organization(self, org_id: str, include_datasets: bool) -> str:
+        """Details van een organisatie"""
+        if not self.dataoverheid:
+            return "⚠️ Data.overheid.nl connector niet beschikbaar"
+
+        try:
+            loop = asyncio.get_event_loop()
+            org = await loop.run_in_executor(
+                None,
+                lambda: self.dataoverheid.get_organization(org_id, include_datasets)
+            )
+
+            result = f"🏛️ {org.get('title', org.get('display_name', org_id))}\n"
+            result += "=" * 70 + "\n\n"
+            result += f"ID: {org.get('name', org_id)}\n"
+            result += f"Datasets: {org.get('package_count', 0)}\n"
+
+            description = org.get('description', '')
+            if description:
+                result += f"\nBeschrijving:\n{description}\n"
+
+            # Image URL
+            image_url = org.get('image_url', '')
+            if image_url:
+                result += f"\nLogo: {image_url}\n"
+
+            # Datasets
+            if include_datasets:
+                packages = org.get('packages', [])
+                if packages:
+                    result += f"\n📊 Datasets ({len(packages)}):\n\n"
+                    for i, pkg in enumerate(packages[:20], 1):
+                        title = pkg.get('title', pkg.get('name', 'Geen titel'))
+                        result += f"{i}. {title}\n"
+                        result += f"   ID: {pkg.get('name', '')}\n"
+
+                        notes = pkg.get('notes', '')
+                        if notes:
+                            preview = notes[:100] + '...' if len(notes) > 100 else notes
+                            result += f"   {preview}\n"
+                        result += "\n"
+
+                    if len(packages) > 20:
+                        result += f"... en nog {len(packages) - 20} datasets meer\n"
+
+            result += "=" * 70
+            return result
+        except Exception as e:
+            return f"❌ Fout bij ophalen organisatie: {str(e)}"
 
 async def main():
     """Main entry point"""
@@ -481,62 +703,61 @@ if __name__ == "__main__":
         """Analyseer Woo koppeling voor een dataset"""
         if not self.woo_connector:
             return "⚠️ Woo connector niet beschikbaar. Installeer woo_connector.py"
-        
+
         try:
             # Haal dataset op
             data = await self.fetch_api(f"/datasets/{dataset_id}")
             dataset = data.get("data", data)
-            
+
             # Genereer Woo rapport
             report = self.woo_connector.generate_woo_report(dataset)
             return report
-            
+
         except Exception as e:
             return f"❌ Fout bij analyseren Woo koppeling: {str(e)}"
-    
+
     async def find_woo_related_datasets(self, topic: str) -> str:
         """Vind datasets gerelateerd aan een Woo onderwerp"""
         if not self.woo_connector:
             return "⚠️ Woo connector niet beschikbaar. Installeer woo_connector.py"
-        
+
         try:
             # Haal alle datasets op
             data = await self.fetch_api("/datasets")
             datasets = data.get("data", [])
-            
+
             # Vind gerelateerde datasets
             related = self.woo_connector.find_related_datasets(topic, datasets)
-            
+
             if not related:
                 return f"Geen datasets gevonden gerelateerd aan '{topic}'"
-            
+
             result = f"🔗 Datasets gerelateerd aan '{topic}':\n\n"
             result += f"Gevonden: {len(related)} dataset(s)\n\n"
-            
+
             for item in related[:10]:  # Top 10
                 ds = item['dataset']
                 analysis = item['analysis']
                 relevance = item['relevance']
-                
+
                 attrs = ds.get('attributes', {})
                 title = self.get_attr(attrs, 'title') or ds.get('id', 'Geen titel')
-                
+
                 result += f"📊 {title}\n"
                 result += f"   ID: {ds.get('id')}\n"
                 result += f"   Relevantie: {relevance}/10\n"
                 result += f"   Topics: {', '.join(analysis['topics'][:3])}\n"
-                
+
                 if analysis['woo_categories']:
                     woo_cats = [c['name'] for c in analysis['woo_categories'][:2]]
                     result += f"   Woo categorieën: {', '.join(woo_cats)}\n"
-                
+
                 result += "\n"
-            
+
             if len(related) > 10:
                 result += f"... en nog {len(related) - 10} datasets meer\n"
-            
+
             return result
-            
+
         except Exception as e:
             return f"❌ Fout bij zoeken gerelateerde datasets: {str(e)}"
-

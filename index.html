@@ -347,25 +347,108 @@
                 padding: 20px;
                 color: #666;
             }
+
+            /* Tabs styling */
+            .tabs {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 20px;
+                background: white;
+                padding: 10px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .tab {
+                flex: 1;
+                padding: 15px 25px;
+                background: #f5f5f5;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 600;
+                transition: all 0.3s;
+                color: #666;
+            }
+
+            .tab:hover {
+                background: #e0e0e0;
+            }
+
+            .tab.active {
+                background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
+                color: white;
+            }
+
+            .tab-content {
+                display: none;
+            }
+
+            .tab-content.active {
+                display: block;
+            }
+
+            .org-filter {
+                width: 250px;
+                padding: 14px 18px;
+                font-size: 16px;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                margin-left: 10px;
+                background: white;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <header>
-                <h1>🏛️ Utrecht Open Data</h1>
+                <h1>🏛️ Open Data Nederland</h1>
                 <p>
-                    Doorzoek en download open datasets van de gemeente Utrecht
+                    Doorzoek en download open datasets van Utrecht én heel
+                    Nederland
                 </p>
             </header>
 
-            <div class="search-box">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Zoek naar datasets (bijv. verkeer, parkeren, afval)..."
-                />
-                <button onclick="search()">🔍 Zoeken</button>
-                <button onclick="loadAll()">📋 Toon alle</button>
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('utrecht')">
+                    🏛️ Utrecht Open Data
+                </button>
+                <button class="tab" onclick="switchTab('overheid')">
+                    🇳🇱 Data.overheid.nl
+                </button>
+            </div>
+
+            <!-- Utrecht Tab -->
+            <div id="utrecht-tab" class="tab-content active">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Zoek Utrecht datasets (bijv. verkeer, parkeren, afval)..."
+                    />
+                    <button onclick="search()">🔍 Zoeken</button>
+                    <button onclick="loadAll()">📋 Toon alle</button>
+                </div>
+            </div>
+
+            <!-- Data.overheid.nl Tab -->
+            <div id="overheid-tab" class="tab-content">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        id="overheidSearchInput"
+                        placeholder="Zoek landelijke datasets (bijv. klimaat, CBS, energie)..."
+                    />
+                    <select id="orgFilter" class="org-filter">
+                        <option value="">Alle organisaties</option>
+                    </select>
+                    <button onclick="searchOverheid()">🔍 Zoeken</button>
+                    <button onclick="loadOrganizations()">
+                        🏛️ Organisaties
+                    </button>
+                </div>
             </div>
 
             <div id="status">Datasets laden...</div>
@@ -383,6 +466,32 @@
 
         <script>
             let allDatasets = [];
+            let currentTab = "utrecht";
+            let allOrganizations = [];
+
+            // Tab switching
+            function switchTab(tab) {
+                currentTab = tab;
+
+                // Update tab buttons
+                document
+                    .querySelectorAll(".tab")
+                    .forEach((t) => t.classList.remove("active"));
+                event.target.classList.add("active");
+
+                // Update tab content
+                document
+                    .querySelectorAll(".tab-content")
+                    .forEach((tc) => tc.classList.remove("active"));
+                document.getElementById(`${tab}-tab`).classList.add("active");
+
+                // Clear results
+                document.getElementById("results").innerHTML = "";
+                document.getElementById("status").textContent =
+                    tab === "utrecht"
+                        ? "Klaar om te zoeken..."
+                        : "Klaar om landelijke datasets te zoeken...";
+            }
 
             // Helper functie voor namespaced attributen
             function getAttr(obj, key) {
@@ -737,6 +846,292 @@
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape") closeModal();
             });
+
+            // ===== DATA.OVERHEID.NL FUNCTIES =====
+
+            async function searchOverheid() {
+                const query = document.getElementById(
+                    "overheidSearchInput",
+                ).value;
+                const org = document.getElementById("orgFilter").value;
+
+                document.getElementById("status").textContent =
+                    "Zoeken op data.overheid.nl...";
+                document.getElementById("results").innerHTML = "";
+
+                try {
+                    let url = "/dataoverheid/package_search?rows=20";
+
+                    if (query) {
+                        url += `&q=${encodeURIComponent(query)}`;
+                    } else {
+                        url += "&q=*:*";
+                    }
+
+                    if (org) {
+                        url += `&fq=organization:"${encodeURIComponent(org)}"`;
+                    }
+
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.success && data.result) {
+                        const datasets = data.result.results || [];
+                        const count = data.result.count || 0;
+
+                        document.getElementById("status").textContent =
+                            `Gevonden: ${count} datasets op data.overheid.nl`;
+
+                        displayOverheidDatasets(datasets);
+                    } else {
+                        throw new Error("Geen resultaten");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    document.getElementById("status").textContent =
+                        "❌ Fout bij ophalen data.overheid.nl datasets";
+                    document.getElementById("results").innerHTML =
+                        '<div class="loading">Kon data niet ophalen. Zorg dat de proxy server draait.</div>';
+                }
+            }
+
+            function displayOverheidDatasets(datasets) {
+                const resultsDiv = document.getElementById("results");
+
+                if (datasets.length === 0) {
+                    resultsDiv.innerHTML =
+                        '<div class="loading">Geen datasets gevonden</div>';
+                    return;
+                }
+
+                resultsDiv.innerHTML = datasets
+                    .map((dataset) => {
+                        const title = escapeHtml(
+                            dataset.title || dataset.name || "Geen titel",
+                        );
+                        const notes = escapeHtml(
+                            dataset.notes || "Geen beschrijving",
+                        );
+                        const preview =
+                            notes.length > 200
+                                ? notes.substring(0, 200) + "..."
+                                : notes;
+                        const org = dataset.organization || {};
+                        const orgTitle = escapeHtml(
+                            org.title || org.name || "Onbekend",
+                        );
+
+                        const resources = dataset.resources || [];
+                        const formats = [
+                            ...new Set(
+                                resources.map((r) => r.format).filter((f) => f),
+                            ),
+                        ];
+                        const formatText =
+                            formats.length > 0
+                                ? formats.slice(0, 3).join(", ")
+                                : "Geen downloads";
+
+                        return `
+                        <div class="dataset-card" onclick='showOverheidDetails("${dataset.name}")'>
+                            <div class="dataset-title">${title}</div>
+                            <div class="dataset-org">🏛️ ${orgTitle}</div>
+                            <div class="dataset-description">${preview}</div>
+                            <div class="dataset-meta">
+                                <span>📦 ${resources.length} resource(s)</span>
+                                <span>📄 ${formatText}</span>
+                            </div>
+                        </div>
+                    `;
+                    })
+                    .join("");
+            }
+
+            async function showOverheidDetails(datasetId) {
+                document.getElementById("modal").style.display = "flex";
+                document.getElementById("modalContent").innerHTML =
+                    '<div class="loading">Details laden...</div>';
+
+                try {
+                    const response = await fetch(
+                        `/dataoverheid/package_show?id=${encodeURIComponent(datasetId)}`,
+                    );
+                    const data = await response.json();
+
+                    if (data.success && data.result) {
+                        displayOverheidDetailsModal(data.result);
+                    } else {
+                        throw new Error("Geen data");
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                    document.getElementById("modalContent").innerHTML =
+                        '<div class="loading">❌ Fout bij ophalen details</div>';
+                }
+            }
+
+            function displayOverheidDetailsModal(dataset) {
+                const title = escapeHtml(
+                    dataset.title || dataset.name || "Geen titel",
+                );
+                const notes = escapeHtml(dataset.notes || "Geen beschrijving");
+                const org = dataset.organization || {};
+                const orgTitle = escapeHtml(org.title || "Onbekend");
+                const license = escapeHtml(dataset.license_title || "Onbekend");
+                const created = dataset.metadata_created
+                    ? dataset.metadata_created.substring(0, 10)
+                    : "Onbekend";
+                const modified = dataset.metadata_modified
+                    ? dataset.metadata_modified.substring(0, 10)
+                    : "Onbekend";
+
+                let html = `
+                    <div class="details-title">${title}</div>
+                    <div class="details-id">ID: ${escapeHtml(dataset.name)}</div>
+
+                    <div class="meta-grid">
+                        <div class="meta-item">
+                            <strong>🏛️ Organisatie</strong>
+                            ${orgTitle}
+                        </div>
+                        <div class="meta-item">
+                            <strong>📜 Licentie</strong>
+                            ${license}
+                        </div>
+                        <div class="meta-item">
+                            <strong>📅 Aangemaakt</strong>
+                            ${created}
+                        </div>
+                        <div class="meta-item">
+                            <strong>🔄 Gewijzigd</strong>
+                            ${modified}
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h3>📖 Beschrijving</h3>
+                        <p>${notes.replace(/\n/g, "<br>")}</p>
+                    </div>
+                `;
+
+                const tags = dataset.tags || [];
+                if (tags.length > 0) {
+                    html += '<div class="section"><h3>🏷️ Tags</h3><p>';
+                    tags.forEach((tag) => {
+                        html += `<span class="woo-topic-tag">${escapeHtml(tag.display_name || tag.name)}</span> `;
+                    });
+                    html += "</p></div>";
+                }
+
+                const resources = dataset.resources || [];
+                if (resources.length > 0) {
+                    html += '<div class="section"><h3>📦 Downloads</h3>';
+
+                    resources.forEach((resource) => {
+                        const resName = escapeHtml(resource.name || "Naamloos");
+                        const resFormat = escapeHtml(
+                            resource.format || "Onbekend",
+                        ).toUpperCase();
+                        const resUrl = resource.url || "";
+
+                        html += `
+                            <div class="download-item">
+                                <div class="download-header">
+                                    <div class="download-format">${resFormat}</div>
+                                </div>
+                                <div class="download-title">${resName}</div>
+                                ${resUrl ? `<a href="${escapeHtml(resUrl)}" class="download-link" target="_blank" onclick="event.stopPropagation()">⬇️ Download</a>` : ""}
+                            </div>
+                        `;
+                    });
+
+                    html += "</div>";
+                }
+
+                html += `
+                    <div class="section">
+                        <a href="https://data.overheid.nl/dataset/${escapeHtml(dataset.name)}"
+                           target="_blank"
+                           class="download-link"
+                           onclick="event.stopPropagation()">
+                            🔗 Bekijk op data.overheid.nl
+                        </a>
+                    </div>
+                `;
+
+                document.getElementById("modalContent").innerHTML = html;
+            }
+
+            async function loadOrganizations() {
+                try {
+                    const response = await fetch(
+                        "/dataoverheid/organization_list?all_fields=true",
+                    );
+                    const data = await response.json();
+
+                    if (data.success && data.result) {
+                        const orgs = data.result;
+
+                        const select = document.getElementById("orgFilter");
+                        select.innerHTML =
+                            '<option value="">Alle organisaties</option>';
+                        orgs.forEach((org) => {
+                            const title =
+                                org.title || org.display_name || org.name;
+                            select.innerHTML += `<option value="${org.name}">${escapeHtml(title)} (${org.package_count || 0})</option>`;
+                        });
+
+                        document.getElementById("status").textContent =
+                            `${orgs.length} overheidsorganisaties beschikbaar`;
+
+                        const resultsDiv = document.getElementById("results");
+                        resultsDiv.innerHTML = orgs
+                            .slice(0, 50)
+                            .map((org) => {
+                                const title = escapeHtml(
+                                    org.title || org.display_name || org.name,
+                                );
+                                const count = org.package_count || 0;
+                                const desc = org.description
+                                    ? escapeHtml(
+                                          org.description.substring(0, 150),
+                                      )
+                                    : "";
+
+                                return `
+                                <div class="dataset-card" onclick='filterByOrg("${org.name}")' style="cursor: pointer;">
+                                    <div class="dataset-title">🏛️ ${title}</div>
+                                    <div class="dataset-meta">
+                                        <span>📊 ${count} datasets</span>
+                                    </div>
+                                    ${desc ? `<div class="dataset-description">${desc}...</div>` : ""}
+                                </div>
+                            `;
+                            })
+                            .join("");
+
+                        if (orgs.length > 50) {
+                            resultsDiv.innerHTML += `<div class="loading">... en nog ${orgs.length - 50} organisaties meer. Gebruik de dropdown om te filteren.</div>`;
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+            }
+
+            function filterByOrg(orgName) {
+                document.getElementById("orgFilter").value = orgName;
+                document.getElementById("overheidSearchInput").value = "";
+                searchOverheid();
+            }
+
+            document
+                .getElementById("overheidSearchInput")
+                .addEventListener("keypress", function (e) {
+                    if (e.key === "Enter") {
+                        searchOverheid();
+                    }
+                });
 
             // Auto-load
             loadAll();

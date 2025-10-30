@@ -316,9 +316,11 @@
                 document.getElementById("results").innerHTML = "";
 
                 try {
-                    const response = await fetch(
-                        "https://open.utrecht.nl/api/datasets",
-                    );
+                    // Use CORS proxy for GitHub Pages
+                    const apiUrl = "https://api.allorigins.win/raw?url=https%3A%2F%2Fopen.utrecht.nl%2Fapi%2Fdatasets";
+                    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(apiUrl)}`;
+
+                    const response = await fetch(proxyUrl);
                     if (!response.ok)
                         throw new Error(`HTTP ${response.status}`);
 
@@ -405,7 +407,7 @@
 
                 try {
                     const response = await fetch(
-                        `https://open.utrecht.nl/api/datasets/${datasetId}`,
+                        `https://api.allorigins.win/raw?url=https%3A%2F%2Fopen.utrecht.nl%2Fapi%2Fdatasets/${datasetId}`,
                     );
                     if (!response.ok)
                         throw new Error(`HTTP ${response.status}`);
@@ -415,7 +417,7 @@
 
                     // Get distributions
                     const distResponse = await fetch(
-                        `https://open.utrecht.nl/api/datasets/${datasetId}/distributions`,
+                        `https://api.allorigins.win/raw?url=https%3A%2F%2Fopen.utrecht.nl%2Fapi%2Fdatasets/${datasetId}/distributions`,
                     );
                     const distData = await distResponse.json();
                     const distributions = distData.data || [];

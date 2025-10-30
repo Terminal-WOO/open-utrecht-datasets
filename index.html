@@ -517,7 +517,15 @@
                 document.getElementById("results").innerHTML = "";
 
                 try {
-                    const response = await fetch("/api/datasets");
+                    // Bepaal API base URL
+                    const isLocal =
+                        window.location.hostname === "localhost" ||
+                        window.location.hostname === "127.0.0.1";
+                    const apiBase = isLocal
+                        ? "/api"
+                        : "https://open.utrecht.nl/api";
+
+                    const response = await fetch(`${apiBase}/datasets`);
                     if (!response.ok)
                         throw new Error(`HTTP ${response.status}`);
 
@@ -588,7 +596,12 @@
                     html || "<p>Geen datasets gevonden</p>";
             }
 
+            // Cache voor dataset details
+            const detailsCache = new Map();
+            const CACHE_DURATION = 5 * 60 * 1000; // 5 minuten
+
             async function showDetails(datasetId) {
+                const startTime = performance.now();
                 const modal = document.getElementById("modal");
                 const content = document.getElementById("modalContent");
 
@@ -596,26 +609,60 @@
                 content.innerHTML =
                     '<div class="loading">⏳ Details laden...</div>';
 
-                try {
-                    // Dataset ophalen
-                    const dsResp = await fetch(`/api/datasets/${datasetId}`);
-                    if (!dsResp.ok) throw new Error("Dataset niet gevonden");
-                    const dsData = await dsResp.json();
-                    const dataset = dsData.data || dsData;
+                console.log(
+                    `Modal open: ${(performance.now() - startTime).toFixed(2)}ms`,
+                );
 
-                    // Distributies ophalen
-                    let distributions = [];
-                    try {
-                        const distResp = await fetch(
-                            `/api/datasets/${datasetId}/distributions`,
-                        );
-                        if (distResp.ok) {
-                            const distData = await distResp.json();
-                            distributions = distData.data || [];
-                        }
-                    } catch (e) {
-                        console.warn("Geen distributies");
+                try {
+                    // Check cache eerst
+                    const cached = detailsCache.get(datasetId);
+                    if (
+                        cached &&
+                        Date.now() - cached.timestamp < CACHE_DURATION
+                    ) {
+                        renderDetails(cached.dataset, cached.distributions);
+                        return;
                     }
+
+                    const fetchStart = performance.now();
+                    // Bepaal of we lokaal draaien of op GitHub Pages
+                    const isLocal =
+                        window.location.hostname === "localhost" ||
+                        window.location.hostname === "127.0.0.1";
+                    const apiBase = isLocal
+                        ? "/api"
+                        : "https://open.utrecht.nl/api";
+
+                    // Parallel ophalen van dataset en distributies
+                    const [dsResp, distResp] = await Promise.all([
+                        fetch(`${apiBase}/datasets/${datasetId}`),
+                        fetch(
+                            `${apiBase}/datasets/${datasetId}/distributions`,
+                        ).catch(() => null),
+                    ]);
+
+                    console.log(
+                        `API fetch: ${(performance.now() - fetchStart).toFixed(2)}ms`,
+                    );
+
+                    if (!dsResp.ok) throw new Error("Dataset niet gevonden");
+
+                    const [dsData, distData] = await Promise.all([
+                        dsResp.json(),
+                        distResp?.ok
+                            ? distResp.json()
+                            : Promise.resolve({ data: [] }),
+                    ]);
+
+                    const dataset = dsData.data || dsData;
+                    const distributions = distData.data || [];
+
+                    // Sla op in cache
+                    detailsCache.set(datasetId, {
+                        dataset,
+                        distributions,
+                        timestamp: Date.now(),
+                    });
 
                     renderDetails(dataset, distributions);
                 } catch (error) {
@@ -739,18 +786,40 @@
                         <h3>🔗 Woo Koppeling</h3>
                     </div>
                     <div id="wooAnalysis-${escapeHtml(dataset.id)}" class="woo-loading">
-                        ⏳ Woo-analyse laden...
+                        <button onclick="loadWooAnalysis('${escapeHtml(dataset.id)}')"
+                                id="wooLoadBtn-${escapeHtml(dataset.id)}"
+                                style="padding: 10px 20px; background: #ff9800; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                            🔍 Toon Woo-analyse
+                        </button>
                     </div>
                 </div>
             `;
 
                 document.getElementById("modalContent").innerHTML = html;
-
-                // Load Woo analysis asynchronously
-                loadWooAnalysis(dataset.id);
             }
 
+            // Cache voor Woo-analyses
+            const wooCache = new Map();
+
             async function loadWooAnalysis(datasetId) {
+                const container = document.getElementById(
+                    `wooAnalysis-${datasetId}`,
+                );
+                const button = document.getElementById(
+                    `wooLoadBtn-${datasetId}`,
+                );
+
+                // Verberg knop en toon loading
+                if (button) button.style.display = "none";
+                container.innerHTML =
+                    '<div class="woo-loading">⏳ Woo-analyse laden...</div>';
+
+                // Check cache
+                if (wooCache.has(datasetId)) {
+                    container.innerHTML = wooCache.get(datasetId);
+                    return;
+                }
+
                 try {
                     const response = await fetch(`/woo/analyze/${datasetId}`);
                     const analysis = await response.json();
@@ -816,14 +885,13 @@
                         }
                     }
 
-                    document.getElementById(
-                        `wooAnalysis-${datasetId}`,
-                    ).innerHTML = html;
+                    // Sla op in cache
+                    wooCache.set(datasetId, html);
+
+                    container.innerHTML = html;
                 } catch (error) {
-                    document.getElementById(
-                        `wooAnalysis-${datasetId}`,
-                    ).innerHTML =
-                        `<p style="color: #999;">❌ Kon Woo-analyse niet laden</p>`;
+                    const errorHtml = `<p style="color: #999;">❌ Kon Woo-analyse niet laden</p>`;
+                    container.innerHTML = errorHtml;
                     console.error("Woo analysis error:", error);
                 }
             }
@@ -947,18 +1015,36 @@
                     .join("");
             }
 
+            // Cache voor data.overheid.nl details
+            const overheidCache = new Map();
+
             async function showOverheidDetails(datasetId) {
                 document.getElementById("modal").style.display = "flex";
                 document.getElementById("modalContent").innerHTML =
                     '<div class="loading">Details laden...</div>';
 
                 try {
+                    // Check cache
+                    const cached = overheidCache.get(datasetId);
+                    if (
+                        cached &&
+                        Date.now() - cached.timestamp < CACHE_DURATION
+                    ) {
+                        displayOverheidDetailsModal(cached.data);
+                        return;
+                    }
+
                     const response = await fetch(
                         `/dataoverheid/package_show?id=${encodeURIComponent(datasetId)}`,
                     );
                     const data = await response.json();
 
                     if (data.success && data.result) {
+                        // Sla op in cache
+                        overheidCache.set(datasetId, {
+                            data: data.result,
+                            timestamp: Date.now(),
+                        });
                         displayOverheidDetailsModal(data.result);
                     } else {
                         throw new Error("Geen data");

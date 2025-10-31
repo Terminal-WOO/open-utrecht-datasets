@@ -521,11 +521,20 @@
                     const isLocal =
                         window.location.hostname === "localhost" ||
                         window.location.hostname === "127.0.0.1";
-                    const apiBase = isLocal
-                        ? "/api"
-                        : "https://open.utrecht.nl/api";
 
-                    const response = await fetch(`${apiBase}/datasets`);
+                    let apiUrl;
+                    if (isLocal) {
+                        apiUrl = "/api/datasets";
+                    } else {
+                        // Op GitHub Pages: gebruik CORS proxy
+                        apiUrl =
+                            "https://api.allorigins.win/raw?url=" +
+                            encodeURIComponent(
+                                "https://open.utrecht.nl/api/datasets",
+                            );
+                    }
+
+                    const response = await fetch(apiUrl);
                     if (!response.ok)
                         throw new Error(`HTTP ${response.status}`);
 
@@ -629,16 +638,29 @@
                     const isLocal =
                         window.location.hostname === "localhost" ||
                         window.location.hostname === "127.0.0.1";
-                    const apiBase = isLocal
-                        ? "/api"
-                        : "https://open.utrecht.nl/api";
+
+                    let datasetUrl, distUrl;
+                    if (isLocal) {
+                        datasetUrl = `/api/datasets/${datasetId}`;
+                        distUrl = `/api/datasets/${datasetId}/distributions`;
+                    } else {
+                        // Op GitHub Pages: gebruik CORS proxy
+                        datasetUrl =
+                            "https://api.allorigins.win/raw?url=" +
+                            encodeURIComponent(
+                                `https://open.utrecht.nl/api/datasets/${datasetId}`,
+                            );
+                        distUrl =
+                            "https://api.allorigins.win/raw?url=" +
+                            encodeURIComponent(
+                                `https://open.utrecht.nl/api/datasets/${datasetId}/distributions`,
+                            );
+                    }
 
                     // Parallel ophalen van dataset en distributies
                     const [dsResp, distResp] = await Promise.all([
-                        fetch(`${apiBase}/datasets/${datasetId}`),
-                        fetch(
-                            `${apiBase}/datasets/${datasetId}/distributions`,
-                        ).catch(() => null),
+                        fetch(datasetUrl),
+                        fetch(distUrl).catch(() => null),
                     ]);
 
                     console.log(

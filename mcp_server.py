@@ -228,7 +228,7 @@ class MCPServer:
                         "include_datasets": {
                             "type": "boolean",
                             "description": "Ook datasets ophalen (standaard false)",
-                            "default": false
+                            "default": False
                         }
                     },
                     "required": ["org_id"]
@@ -365,7 +365,7 @@ class MCPServer:
         data = response.read()
         return json.loads(data.decode('utf-8'))
 
-    def get_attr(self, obj: dict, key: str) -> Any:
+    def get_attr(self, obj: dict, key: str, default: Any = None) -> Any:
         """Get attribute with namespace support"""
         if f"dct:{key}" in obj:
             return obj[f"dct:{key}"]
@@ -375,7 +375,7 @@ class MCPServer:
             return obj[f"foaf:{key}"]
         if key in obj:
             return obj[key]
-        return None
+        return default
 
     async def search_datasets(self, query: Optional[str] = None, limit: int = 20) -> str:
         """Search datasets"""
@@ -698,66 +698,3 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-
-    async def analyze_woo_connection(self, dataset_id: str) -> str:
-        """Analyseer Woo koppeling voor een dataset"""
-        if not self.woo_connector:
-            return "⚠️ Woo connector niet beschikbaar. Installeer woo_connector.py"
-
-        try:
-            # Haal dataset op
-            data = await self.fetch_api(f"/datasets/{dataset_id}")
-            dataset = data.get("data", data)
-
-            # Genereer Woo rapport
-            report = self.woo_connector.generate_woo_report(dataset)
-            return report
-
-        except Exception as e:
-            return f"❌ Fout bij analyseren Woo koppeling: {str(e)}"
-
-    async def find_woo_related_datasets(self, topic: str) -> str:
-        """Vind datasets gerelateerd aan een Woo onderwerp"""
-        if not self.woo_connector:
-            return "⚠️ Woo connector niet beschikbaar. Installeer woo_connector.py"
-
-        try:
-            # Haal alle datasets op
-            data = await self.fetch_api("/datasets")
-            datasets = data.get("data", [])
-
-            # Vind gerelateerde datasets
-            related = self.woo_connector.find_related_datasets(topic, datasets)
-
-            if not related:
-                return f"Geen datasets gevonden gerelateerd aan '{topic}'"
-
-            result = f"🔗 Datasets gerelateerd aan '{topic}':\n\n"
-            result += f"Gevonden: {len(related)} dataset(s)\n\n"
-
-            for item in related[:10]:  # Top 10
-                ds = item['dataset']
-                analysis = item['analysis']
-                relevance = item['relevance']
-
-                attrs = ds.get('attributes', {})
-                title = self.get_attr(attrs, 'title') or ds.get('id', 'Geen titel')
-
-                result += f"📊 {title}\n"
-                result += f"   ID: {ds.get('id')}\n"
-                result += f"   Relevantie: {relevance}/10\n"
-                result += f"   Topics: {', '.join(analysis['topics'][:3])}\n"
-
-                if analysis['woo_categories']:
-                    woo_cats = [c['name'] for c in analysis['woo_categories'][:2]]
-                    result += f"   Woo categorieën: {', '.join(woo_cats)}\n"
-
-                result += "\n"
-
-            if len(related) > 10:
-                result += f"... en nog {len(related) - 10} datasets meer\n"
-
-            return result
-
-        except Exception as e:
-            return f"❌ Fout bij zoeken gerelateerde datasets: {str(e)}"

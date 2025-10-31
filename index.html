@@ -524,14 +524,11 @@
 
                     let apiUrl;
                     if (isLocal) {
+                        // Lokaal: gebruik live API via proxy
                         apiUrl = "/api/datasets";
                     } else {
-                        // Op GitHub Pages: gebruik CORS proxy
-                        apiUrl =
-                            "https://api.allorigins.win/raw?url=" +
-                            encodeURIComponent(
-                                "https://open.utrecht.nl/api/datasets",
-                            );
+                        // GitHub Pages: gebruik statische datasets.json
+                        apiUrl = "./datasets.json";
                     }
 
                     const response = await fetch(apiUrl);
@@ -644,14 +641,14 @@
                         datasetUrl = `/api/datasets/${datasetId}`;
                         distUrl = `/api/datasets/${datasetId}/distributions`;
                     } else {
-                        // Op GitHub Pages: gebruik CORS proxy
+                        // GitHub Pages: gebruik AllOrigins CORS proxy voor details
                         datasetUrl =
-                            "https://api.allorigins.win/raw?url=" +
+                            "https://api.allorigins.win/get?url=" +
                             encodeURIComponent(
                                 `https://open.utrecht.nl/api/datasets/${datasetId}`,
                             );
                         distUrl =
-                            "https://api.allorigins.win/raw?url=" +
+                            "https://api.allorigins.win/get?url=" +
                             encodeURIComponent(
                                 `https://open.utrecht.nl/api/datasets/${datasetId}/distributions`,
                             );
@@ -669,12 +666,26 @@
 
                     if (!dsResp.ok) throw new Error("Dataset niet gevonden");
 
-                    const [dsData, distData] = await Promise.all([
-                        dsResp.json(),
-                        distResp?.ok
-                            ? distResp.json()
-                            : Promise.resolve({ data: [] }),
-                    ]);
+                    let dsData, distData;
+                    if (isLocal) {
+                        // Lokaal: directe JSON response
+                        [dsData, distData] = await Promise.all([
+                            dsResp.json(),
+                            distResp?.ok
+                                ? distResp.json()
+                                : Promise.resolve({ data: [] }),
+                        ]);
+                    } else {
+                        // GitHub Pages: AllOrigins wraps response in .contents
+                        const [dsWrapped, distWrapped] = await Promise.all([
+                            dsResp.json(),
+                            distResp?.ok
+                                ? distResp.json()
+                                : Promise.resolve({ contents: '{"data":[]}' }),
+                        ]);
+                        dsData = JSON.parse(dsWrapped.contents);
+                        distData = JSON.parse(distWrapped.contents);
+                    }
 
                     const dataset = dsData.data || dsData;
                     const distributions = distData.data || [];

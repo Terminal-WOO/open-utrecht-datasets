@@ -1,0 +1,2352 @@
+{
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "meta": {
+    "start": 0,
+    "rows": 180,
+    "total": 180
+  },
+  "data": [
+    {
+      "type": "dataset",
+      "id": "afvalbakken",
+      "attributes": {
+        "dct:title": "Afvalbakken"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/afvalbakken"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2019",
+      "attributes": {
+        "dct:title": "Beschikbaarheid aanbieders aanvullende jeugdhulp - 2019"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2019"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bestelauto-s",
+      "attributes": {
+        "dct:title": "Bestelauto's"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bestelauto-s"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bromfietsen",
+      "attributes": {
+        "dct:title": "Bromfietsen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bromfietsen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bushaltes",
+      "attributes": {
+        "dct:title": "Bushaltes"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bushaltes"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "diefstallen",
+      "attributes": {
+        "dct:title": "Diefstallen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/diefstallen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "dierlijke-mest-mineralen",
+      "attributes": {
+        "dct:title": "Dierlijke mest mineralen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/dierlijke-mest-mineralen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "emissiefactoren",
+      "attributes": {
+        "dct:title": "Emissiefactoren"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/emissiefactoren"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "fietspompen",
+      "attributes": {
+        "dct:title": "Fietspompen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/fietspompen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "fietstellingen",
+      "attributes": {
+        "dct:title": "Fietstellingen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/fietstellingen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gemeenteraadsverkiezingen-2014",
+      "attributes": {
+        "dct:title": "Gemeenteraadsverkiezingen 2014"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gemeenteraadsverkiezingen-2014"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "geneesmiddelen",
+      "attributes": {
+        "dct:title": "Geneesmiddelen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/geneesmiddelen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "huurobjecten-vastgoed",
+      "attributes": {
+        "dct:title": "Huurobjecten vastgoed"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/huurobjecten-vastgoed"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "ibabs-online",
+      "attributes": {
+        "dct:title": "Ibabs Online"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/ibabs-online"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "informatieregister-gemeente-utrecht",
+      "attributes": {
+        "dct:title": "Informatieregister gemeente Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/informatieregister-gemeente-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "jongeren-awbz",
+      "attributes": {
+        "dct:title": "Jongeren AWBZ"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/jongeren-awbz"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "kunstwerken",
+      "attributes": {
+        "dct:title": "Kunstwerken"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/kunstwerken"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "leefbaarheidsinitiatieven",
+      "attributes": {
+        "dct:title": "Leefbaarheidsinitiatieven"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/leefbaarheidsinitiatieven"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "lengte-wegen",
+      "attributes": {
+        "dct:title": "Lengte wegen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/lengte-wegen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "motorvoertuigen",
+      "attributes": {
+        "dct:title": "Motorvoertuigen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/motorvoertuigen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "nabijheid-voorzieningen",
+      "attributes": {
+        "dct:title": "Nabijheid voorzieningen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/nabijheid-voorzieningen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "oppervlaktewaterkwaliteit",
+      "attributes": {
+        "dct:title": "Oppervlaktewaterkwaliteit"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/oppervlaktewaterkwaliteit"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "professionele-podiumkunsten",
+      "attributes": {
+        "dct:title": "Professionele podiumkunsten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/professionele-podiumkunsten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "schriftelijke-vragen-gemeenteraad",
+      "attributes": {
+        "dct:title": "Schriftelijke vragen gemeenteraad"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/schriftelijke-vragen-gemeenteraad"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "snelheidsmetingen-griftstraat",
+      "attributes": {
+        "dct:title": "Snelheidsmetingen Griftstraat"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/snelheidsmetingen-griftstraat"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingen-verkeerslichten-2014",
+      "attributes": {
+        "dct:title": "Tellingen verkeerslichten 2014"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingen-verkeerslichten-2014"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingen-verkeerslichten-2015",
+      "attributes": {
+        "dct:title": "Tellingen verkeerslichten 2015"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingen-verkeerslichten-2015"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-gemeenteraadsverkiezingen-utrecht-2018",
+      "attributes": {
+        "dct:title": "Tellingsbestand Gemeenteraadsverkiezingen Utrecht 2018"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-gemeenteraadsverkiezingen-utrecht-2018"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-nationaal-raadgevend-referendum-gemeente-utrecht-2018",
+      "attributes": {
+        "dct:title": "Tellingsbestand Nationaal Raadgevend Referendum Gemeente Utrecht 2018"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-nationaal-raadgevend-referendum-gemeente-utrecht-2018"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-europees-parlement-kieskring-utrecht",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Europees Parlement - Kieskring Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-europees-parlement-kieskring-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-provinciale-staten-utrecht-2015",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing provinciale staten Utrecht 2015"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-provinciale-staten-utrecht-2015"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-provinciale-staten-utrecht-2019",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing provinciale staten Utrecht 2019"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-provinciale-staten-utrecht-2019"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-van-het-europees-parlement-2019",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing van het Europees Parlement 2019"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-van-het-europees-parlement-2019"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-waterschap-amstel-gooi-en-vecht-utrecht-2019",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Waterschap Amstel, Gooi en Vecht Utrecht 2019"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-waterschap-amstel-gooi-en-vecht-utrecht-2019"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-waterschap-hoogheemraadschap-de-stichtse-rijnlanden-2019",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Waterschap Hoogheemraadschap De Stichtse Rijnlanden 2019"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-waterschap-hoogheemraadschap-de-stichtse-rijnlanden-2019"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezingen-tweede-kamer-2017",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezingen Tweede Kamer 2017"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezingen-tweede-kamer-2017"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezingen-tweede-kamer-2021",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezingen Tweede Kamer 2021"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezingen-tweede-kamer-2021"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezingen-tweede-kamer-kieskring-utrecht",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezingen Tweede Kamer kieskring Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezingen-tweede-kamer-kieskring-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "verdachten",
+      "attributes": {
+        "dct:title": "Verdachten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/verdachten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "vergunningen-nieuwbouw-woningen",
+      "attributes": {
+        "dct:title": "Vergunningen nieuwbouw woningen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/vergunningen-nieuwbouw-woningen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "verkoop-woningen",
+      "attributes": {
+        "dct:title": "Verkoop woningen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/verkoop-woningen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "welzijnsinstellingen",
+      "attributes": {
+        "dct:title": "Welzijnsinstellingen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/welzijnsinstellingen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "wijk-en-warenmarkten",
+      "attributes": {
+        "dct:title": "Wijk- en warenmarkten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/wijk-en-warenmarkten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "wijkcodes-utrecht",
+      "attributes": {
+        "dct:title": "Wijkcodes Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/wijkcodes-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "woonlasten-huishoudens",
+      "attributes": {
+        "dct:title": "Woonlasten huishoudens"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/woonlasten-huishoudens"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "zorginstellingen-utrecht",
+      "attributes": {
+        "dct:title": "Zorginstellingen Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/zorginstellingen-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "grenzen-gemeente-wijk-buurt",
+      "attributes": {
+        "dct:title": "Grenzen gemeente wijk buurt"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/grenzen-gemeente-wijk-buurt"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-gemeenteraad-2022",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Gemeenteraad 2022"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-gemeenteraad-2022"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "jeugdzorg",
+      "attributes": {
+        "dct:title": "Jeugdzorg"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/jeugdzorg"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "makelpunt",
+      "attributes": {
+        "dct:title": "Makelpunt"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/makelpunt"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "parkeerautomaten",
+      "attributes": {
+        "dct:title": "Parkeerautomaten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/parkeerautomaten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "parkeerplaatsen-gehandicapten",
+      "attributes": {
+        "dct:title": "Parkeerplaatsen gehandicapten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/parkeerplaatsen-gehandicapten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "fietstrommels",
+      "attributes": {
+        "dct:title": "Fietstrommels"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/fietstrommels"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "samen-meten-dataportaal",
+      "attributes": {
+        "dct:title": "Samen Meten Dataportaal"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/samen-meten-dataportaal"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "verkeerstellingen-kaart",
+      "attributes": {
+        "dct:title": "Verkeerstellingen Kaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/verkeerstellingen-kaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bomenkaart",
+      "attributes": {
+        "dct:title": "Bomenkaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bomenkaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "oude-bomenkaart-80-jaar-en-ouder-",
+      "attributes": {
+        "dct:title": "Oude Bomenkaart (80 jaar en ouder)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/oude-bomenkaart-80-jaar-en-ouder-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "zeldzame-boomsoorten-kaart",
+      "attributes": {
+        "dct:title": "Zeldzame Boomsoorten Kaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/zeldzame-boomsoorten-kaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "geluidsbelasting-kaart",
+      "attributes": {
+        "dct:title": "Geluidsbelastingkaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/geluidsbelasting-kaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "wijkbureaus-utrecht",
+      "attributes": {
+        "dct:title": "Wijkbureaus Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/wijkbureaus-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "grondwater",
+      "attributes": {
+        "dct:title": "Grondwater"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/grondwater"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "leerlingen",
+      "attributes": {
+        "dct:title": "Leerlingen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/leerlingen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "openbare-ruimte",
+      "attributes": {
+        "dct:title": "Nulmeting kwaliteit openbare ruimte 2014"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/openbare-ruimte"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2017-2018",
+      "attributes": {
+        "dct:title": "Beschikbaarheid aanbieders aanvullende jeugdhulp - 2017/2018"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2017-2018"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2018-vervolg",
+      "attributes": {
+        "dct:title": "Beschikbaarheid aanbieders aanvullende jeugdhulp - 2018 vervolg"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/beschikbaarheid-aanbieders-aanvullende-jeugdhulp-2018-vervolg"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-barometer",
+      "attributes": {
+        "dct:title": "Utrecht Barometer"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-barometer"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "zonnepanelen",
+      "attributes": {
+        "dct:title": "Zonnepanelen geschiktheid - Zonatlas"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/zonnepanelen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "p-route-parkeren",
+      "attributes": {
+        "dct:title": "P-route parkeren"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/p-route-parkeren"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "openbare-verlichting",
+      "attributes": {
+        "dct:title": "OVL Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/openbare-verlichting"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "luchtmeetnet-utrecht",
+      "attributes": {
+        "dct:title": "Luchtmeetnet Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/luchtmeetnet-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "3d-model-ondergrond-",
+      "attributes": {
+        "dct:title": "3D Model Ondergrond"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/3d-model-ondergrond-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bestemmingsplan",
+      "attributes": {
+        "dct:title": "Bestemmingsplan"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bestemmingsplan"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-waterschap-hoogheemraadschap-de-stichtse-rijnlanden-2023",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing waterschap Hoogheemraadschap de Stichtse Rijnlanden 2023"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-waterschap-hoogheemraadschap-de-stichtse-rijnlanden-2023"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-waterschap-amstel-gooi-en-vecht-2023",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing waterschap Amstel, Gooi en Vecht 2023"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-waterschap-amstel-gooi-en-vecht-2023"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-provinciale-staten-2023",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Provinciale Staten 2023"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-provinciale-staten-2023"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gemeentelijk-beschermd-stadsgezicht",
+      "attributes": {
+        "dct:title": "Gemeentelijk beschermd stadsgezicht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gemeentelijk-beschermd-stadsgezicht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-provinciale-staten-2023-centraal-stembureau",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Provinciale Staten 2023 Centraal Stembureau"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-provinciale-staten-2023-centraal-stembureau"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "jeugdmonitor",
+      "attributes": {
+        "dct:title": "Jeugdmonitor Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/jeugdmonitor"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "voetgangersgebied",
+      "attributes": {
+        "dct:title": "Voetgangersgebied"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/voetgangersgebied"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "openbaar-datalekregister-utrecht",
+      "attributes": {
+        "dct:title": "Openbaar datalekregister Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/openbaar-datalekregister-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "co2-uitstoot-gemeente-utrecht",
+      "attributes": {
+        "dct:title": "CO2 Uitstoot"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/co2-uitstoot-gemeente-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "beeldbepalende-panden",
+      "attributes": {
+        "dct:title": "Beeldbepalende gebouwen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/beeldbepalende-panden"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "religieus-erfgoed",
+      "attributes": {
+        "dct:title": "Religieus Erfgoed"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/religieus-erfgoed"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezingen-tweede-kamer-2023",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Tweede Kamer 2023"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezingen-tweede-kamer-2023"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-tweede-kamer-2023-hoofdstembureau",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing Tweede Kamer 2023 Hoofdstembureau"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-tweede-kamer-2023-hoofdstembureau"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bomen",
+      "attributes": {
+        "dct:title": "Bomen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bomen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-voorkeur-voor-contact-met-en-informatie-van-de-gemeente-tevredenheid-dienstver",
+      "attributes": {
+        "dct:title": "Indicatoren Voorkeur voor contact met en informatie van de gemeente (Tevredenheid & dienstverlening)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-voorkeur-voor-contact-met-en-informatie-van-de-gemeente-tevredenheid-dienstver"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-jongvolwassenen-gezondheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Jongvolwassenen (Gezondheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-jongvolwassenen-gezondheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-verkeersveiligheid-mobiliteit-",
+      "attributes": {
+        "dct:title": "Indicatoren Verkeersveiligheid (Mobiliteit)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-verkeersveiligheid-mobiliteit-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-woningbezetting-en-oppervlakte-wonen-",
+      "attributes": {
+        "dct:title": "Indicatoren Woningbezetting en -oppervlakte (Wonen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-woningbezetting-en-oppervlakte-wonen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-criminaliteitsontwikkeling-veiligheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Criminaliteitsontwikkeling (Veiligheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-criminaliteitsontwikkeling-veiligheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-verhuringen-via-woningcorporaties-wonen-",
+      "attributes": {
+        "dct:title": "Indicatoren Verhuringen via woningcorporaties (Wonen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-verhuringen-via-woningcorporaties-wonen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-vertrouwen-in-overheid-gemeentebestuur-verkiezingen-",
+      "attributes": {
+        "dct:title": "Indicatoren Vertrouwen in overheid (Gemeentebestuur & verkiezingen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-vertrouwen-in-overheid-gemeentebestuur-verkiezingen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-huishoudens-bevolking-",
+      "attributes": {
+        "dct:title": "Indicatoren Huishoudens (Bevolking)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-huishoudens-bevolking-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-welzijn-en-zelfredzaamheid-sociale-kracht-",
+      "attributes": {
+        "dct:title": "Indicatoren Welzijn en zelfredzaamheid (Sociale kracht)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-welzijn-en-zelfredzaamheid-sociale-kracht-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-aanbod-openbare-ruimte-openbare-ruimte-groen-",
+      "attributes": {
+        "dct:title": "Indicatoren Aanbod openbare ruimte (Openbare ruimte & groen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-aanbod-openbare-ruimte-openbare-ruimte-groen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-verkiezingen-gemeentebestuur-verkiezingen-",
+      "attributes": {
+        "dct:title": "Indicatoren Verkiezingen (Gemeentebestuur & verkiezingen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-verkiezingen-gemeentebestuur-verkiezingen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-veiligheid",
+      "attributes": {
+        "dct:title": "Indicatoren Veiligheid"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-veiligheid"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-cultuurdeelname-cultuur-",
+      "attributes": {
+        "dct:title": "Indicatoren Cultuurdeelname (Cultuur)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-cultuurdeelname-cultuur-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-economie",
+      "attributes": {
+        "dct:title": "Indicatoren Economie"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-economie"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-transacties-koopwoningen-wonen-",
+      "attributes": {
+        "dct:title": "Indicatoren Transacties koopwoningen (Wonen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-transacties-koopwoningen-wonen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-sport-vrije-tijd",
+      "attributes": {
+        "dct:title": "Indicatoren Sport & vrije tijd"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-sport-vrije-tijd"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-kinderen-gezondheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Kinderen (Gezondheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-kinderen-gezondheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-cultuuraanbod-en-tevredenheid-cultuur-",
+      "attributes": {
+        "dct:title": "Indicatoren Cultuuraanbod en tevredenheid (Cultuur)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-cultuuraanbod-en-tevredenheid-cultuur-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-opvoeding-jeugd-sociale-kracht-",
+      "attributes": {
+        "dct:title": "Indicatoren Opvoeding jeugd (Sociale kracht)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-opvoeding-jeugd-sociale-kracht-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-fiets-mobiliteit-",
+      "attributes": {
+        "dct:title": "Indicatoren Fiets (Mobiliteit)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-fiets-mobiliteit-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-vluchtelingen-en-asielzoekers-bevolking-",
+      "attributes": {
+        "dct:title": "Indicatoren Vluchtelingen en asielzoekers (Bevolking)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-vluchtelingen-en-asielzoekers-bevolking-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-onderwijsprestaties-tevredenheid-onderwijs-vaardigheden-",
+      "attributes": {
+        "dct:title": "Indicatoren Onderwijsprestaties & -tevredenheid (Onderwijs & vaardigheden)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-onderwijsprestaties-tevredenheid-onderwijs-vaardigheden-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-baliebezoek-en-telefonie-tevredenheid-dienstverlening-",
+      "attributes": {
+        "dct:title": "Indicatoren Baliebezoek en telefonie (Tevredenheid & dienstverlening)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-baliebezoek-en-telefonie-tevredenheid-dienstverlening-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-sociale-cohesie-sociale-kracht-",
+      "attributes": {
+        "dct:title": "Indicatoren Sociale cohesie (Sociale kracht)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-sociale-cohesie-sociale-kracht-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-participatie-participatie-initiatief-",
+      "attributes": {
+        "dct:title": "Indicatoren Participatie (Participatie & initiatief)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-participatie-participatie-initiatief-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-jongeren-gezondheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Jongeren (Gezondheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-jongeren-gezondheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-bevolkingsprognose-bevolking-",
+      "attributes": {
+        "dct:title": "Indicatoren Bevolkingsprognose (Bevolking)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-bevolkingsprognose-bevolking-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-digitale-vaardigheden-onderwijs-vaardigheden-",
+      "attributes": {
+        "dct:title": "Indicatoren Digitale vaardigheden (Onderwijs & vaardigheden)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-digitale-vaardigheden-onderwijs-vaardigheden-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-auto-mobiliteit-",
+      "attributes": {
+        "dct:title": "Indicatoren Auto (Mobiliteit)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-auto-mobiliteit-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-maatschappelijke-participatie-sociale-kracht-",
+      "attributes": {
+        "dct:title": "Indicatoren Maatschappelijke participatie (Sociale kracht)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-maatschappelijke-participatie-sociale-kracht-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-schulden-werk-inkomen-",
+      "attributes": {
+        "dct:title": "Indicatoren Schulden (Werk & inkomen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-schulden-werk-inkomen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-het-jonge-kind-onderwijs-vaardigheden-",
+      "attributes": {
+        "dct:title": "Indicatoren Het jonge kind (Onderwijs & vaardigheden)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-het-jonge-kind-onderwijs-vaardigheden-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-energie-milieu-duurzaamheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Energie (Milieu & duurzaamheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-energie-milieu-duurzaamheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-tevredenheid-dienstverlening-tevredenheid-dienstverlening-",
+      "attributes": {
+        "dct:title": "Indicatoren Tevredenheid dienstverlening (Tevredenheid & dienstverlening)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-tevredenheid-dienstverlening-tevredenheid-dienstverlening-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-volwassenen-gezondheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Volwassenen (Gezondheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-volwassenen-gezondheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-recreatie-sport-vrije-tijd-",
+      "attributes": {
+        "dct:title": "Indicatoren Recreatie (Sport & vrije tijd)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-recreatie-sport-vrije-tijd-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-milieu-milieu-duurzaamheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Milieu (Milieu & duurzaamheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-milieu-milieu-duurzaamheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-armoede-werk-inkomen-",
+      "attributes": {
+        "dct:title": "Indicatoren Armoede (Werk & inkomen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-armoede-werk-inkomen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-openbaar-vervoer-mobiliteit-",
+      "attributes": {
+        "dct:title": "Indicatoren Openbaar vervoer (Mobiliteit)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-openbaar-vervoer-mobiliteit-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-staat-openbare-ruimte-openbare-ruimte-groen-",
+      "attributes": {
+        "dct:title": "Indicatoren Staat openbare ruimte (Openbare ruimte & groen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-staat-openbare-ruimte-openbare-ruimte-groen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-arbeidsmarkt-economie-",
+      "attributes": {
+        "dct:title": "Indicatoren Arbeidsmarkt (Economie)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-arbeidsmarkt-economie-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-bevolkingsontwikkeling-bevolking-",
+      "attributes": {
+        "dct:title": "Indicatoren Bevolkingsontwikkeling (Bevolking)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-bevolkingsontwikkeling-bevolking-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-afval-milieu-duurzaamheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Afval (Milieu & duurzaamheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-afval-milieu-duurzaamheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-vastgoed",
+      "attributes": {
+        "dct:title": "Indicatoren Vastgoed"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-vastgoed"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-inkomen-uitkeringen-werk-inkomen-",
+      "attributes": {
+        "dct:title": "Indicatoren Inkomen & uitkeringen (Werk & inkomen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-inkomen-uitkeringen-werk-inkomen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-woning-en-buurttevredenheid-wonen-",
+      "attributes": {
+        "dct:title": "Indicatoren Woning- en buurttevredenheid (Wonen)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-woning-en-buurttevredenheid-wonen-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-initiatief-participatie-initiatief-",
+      "attributes": {
+        "dct:title": "Indicatoren Initiatief (Participatie & initiatief)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-initiatief-participatie-initiatief-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-wonen",
+      "attributes": {
+        "dct:title": "Indicatoren Wonen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-wonen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-bevolking",
+      "attributes": {
+        "dct:title": "Indicatoren Bevolking"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-bevolking"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-leerlingpopulatie-onderwijs-vaardigheden-",
+      "attributes": {
+        "dct:title": "Indicatoren Leerlingpopulatie (Onderwijs & vaardigheden)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-leerlingpopulatie-onderwijs-vaardigheden-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-bibliotheken-onderwijs-vaardigheden-",
+      "attributes": {
+        "dct:title": "Indicatoren Bibliotheken (Onderwijs & vaardigheden)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-bibliotheken-onderwijs-vaardigheden-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-veiligheidsbeleving-veiligheid-",
+      "attributes": {
+        "dct:title": "Indicatoren Veiligheidsbeleving (Veiligheid)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-veiligheidsbeleving-veiligheid-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-online-dienstverlening-tevredenheid-dienstverlening-",
+      "attributes": {
+        "dct:title": "Indicatoren Online dienstverlening (Tevredenheid & dienstverlening)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-online-dienstverlening-tevredenheid-dienstverlening-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "indicatoren-bereikbaarheid-mobiliteit-",
+      "attributes": {
+        "dct:title": "Indicatoren Bereikbaarheid (Mobiliteit)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/indicatoren-bereikbaarheid-mobiliteit-"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-van-het-europees-parlement-2024",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing van het Europees Parlement 2024"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-van-het-europees-parlement-2024"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tellingsbestand-verkiezing-van-het-europees-parlement-2024-hoofdstembureau",
+      "attributes": {
+        "dct:title": "Tellingsbestand verkiezing van het Europees Parlement 2024 Hoofdstembureau"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tellingsbestand-verkiezing-van-het-europees-parlement-2024-hoofdstembureau"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "monumenten-adressen-web-feature-service",
+      "attributes": {
+        "dct:title": "Monumenten Adressen en Contouren WFS"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/monumenten-adressen-web-feature-service"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "monumenten-informatie-systeem",
+      "attributes": {
+        "dct:title": "Monumenten Informatie Systeem (MIS)"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/monumenten-informatie-systeem"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "buitenplaatsen",
+      "attributes": {
+        "dct:title": "Voormalige buitenplaatsen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/buitenplaatsen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gezondheidsmonitor-jongvolwassenen",
+      "attributes": {
+        "dct:title": "Gezondheidsmonitor Jongvolwassenen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gezondheidsmonitor-jongvolwassenen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gezondheidsmonitor-volwassenen-en-ouderen",
+      "attributes": {
+        "dct:title": "Gezondheidsmonitor Volwassenen en Ouderen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gezondheidsmonitor-volwassenen-en-ouderen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gezondheidsmonitor-jeugd",
+      "attributes": {
+        "dct:title": "Gezondheidsmonitor Jeugd"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gezondheidsmonitor-jeugd"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "bodem",
+      "attributes": {
+        "dct:title": "Historische Kaarten Bodem"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/bodem"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "straatnamen",
+      "attributes": {
+        "dct:title": "Straatnamen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/straatnamen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "wob-verzoeken",
+      "attributes": {
+        "dct:title": "WOB verzoeken"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/wob-verzoeken"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "maatstaven-gemeentefonds",
+      "attributes": {
+        "dct:title": "Maatstaven gemeentefonds"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/maatstaven-gemeentefonds"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "gemeenterekening-heffingen",
+      "attributes": {
+        "dct:title": "Gemeenterekening heffingen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/gemeenterekening-heffingen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "tarieven-gemeentelijke-heffingen-utrecht",
+      "attributes": {
+        "dct:title": "Tarieven gemeentelijke heffingen Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/tarieven-gemeentelijke-heffingen-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "website-gemeente-utrecht",
+      "attributes": {
+        "dct:title": "Meest bezochte onderwerpen website gemeente Utrecht 2015"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/website-gemeente-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "slim-melden",
+      "attributes": {
+        "dct:title": "Slim Melden tot 2022"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/slim-melden"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "financiele-detaildata",
+      "attributes": {
+        "dct:title": "Financiele detaildata"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/financiele-detaildata"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "algoritmeregister-utrecht",
+      "attributes": {
+        "dct:title": "Algoritmeregister Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/algoritmeregister-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "risicogebieden-ontplofbare-oorlogsresten-1",
+      "attributes": {
+        "dct:title": "Verdachte gebieden Ontplofbare Oorlogsresten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/risicogebieden-ontplofbare-oorlogsresten-1"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "archeologische-waardenkaart-2021",
+      "attributes": {
+        "dct:title": "Archeologische waardenkaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/archeologische-waardenkaart-2021"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "groenstructuurvisiekaart",
+      "attributes": {
+        "dct:title": "Groenstructuurvisiekaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/groenstructuurvisiekaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "subsidieregister-utrecht",
+      "attributes": {
+        "dct:title": "Subsidieregister Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/subsidieregister-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-kastanjes-terugplant-locaties",
+      "attributes": {
+        "dct:title": "Kastanjes_terugplant_locaties"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-kastanjes-terugplant-locaties"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-oude-bomen-in-utrecht",
+      "attributes": {
+        "dct:title": "Oude_bomen_in_Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-oude-bomen-in-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-bomenkaart-update-2024",
+      "attributes": {
+        "dct:title": "Bomenkaart update 2024"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-bomenkaart-update-2024"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-areaal-bos-en-bosplantsoenen",
+      "attributes": {
+        "dct:title": "Areaal bos en bosplantsoenen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-areaal-bos-en-bosplantsoenen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-zeldzamebomen",
+      "attributes": {
+        "dct:title": "ZeldzameBomen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-zeldzamebomen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-plusopvang",
+      "attributes": {
+        "dct:title": "Plusopvang"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-plusopvang"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-strooiroutes",
+      "attributes": {
+        "dct:title": "Strooiroutes"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-strooiroutes"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-havenatlas-2024",
+      "attributes": {
+        "dct:title": "Havenatlas 2024"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-havenatlas-2024"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-maaikaart",
+      "attributes": {
+        "dct:title": "Maaikaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-maaikaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-boomrisicozones",
+      "attributes": {
+        "dct:title": "Boomrisicozones"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-boomrisicozones"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-corporatiekaart",
+      "attributes": {
+        "dct:title": "Corporatiekaart"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-corporatiekaart"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "register-verwerkingen-gemeente-utrecht",
+      "attributes": {
+        "dct:title": "Register verwerkingen gemeente Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/register-verwerkingen-gemeente-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-vellijsten",
+      "attributes": {
+        "dct:title": "Vellijsten"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-vellijsten"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-voorscholen",
+      "attributes": {
+        "dct:title": "Voorscholen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-voorscholen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "utrecht-geo-werfkelders",
+      "attributes": {
+        "dct:title": "Werfkelders"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/utrecht-geo-werfkelders"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "evenementen",
+      "attributes": {
+        "dct:title": "Evenementen"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/evenementen"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "cameraregister-utrecht",
+      "attributes": {
+        "dct:title": "Cameraregister Utrecht"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/cameraregister-utrecht"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    },
+    {
+      "type": "dataset",
+      "id": "weekoverzicht-woo-verzoeken",
+      "attributes": {
+        "dct:title": "Weekoverzicht Woo-verzoeken"
+      },
+      "links": {
+        "self": "https://open.utrecht.nl/dataset/weekoverzicht-woo-verzoeken"
+      },
+      "meta": {
+        "visibility": "public"
+      }
+    }
+  ]
+}
